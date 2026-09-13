@@ -23,3 +23,4 @@ BOOT-INF/
 .DS_Store
 Thumbs.db
 desktop.ini
+*.sql
