@@ -29,7 +29,8 @@ public class SecurityConfig {
 
         configuration.setAllowedOriginPatterns(List.of(
                 "http://localhost:*",
-                "http://127.0.0.1:*"
+                "http://127.0.0.1:*",
+                "https://distributed-job-platform-rose.vercel.app"
         ));
 
         configuration.setAllowedMethods(List.of(
@@ -84,19 +85,11 @@ public class SecurityConfig {
                                 "/api/auth/login"
                         ).permitAll()
 
-                        /*
-                         * Allow CORS preflight requests.
-                         */
                         .requestMatchers(
                                 HttpMethod.OPTIONS,
                                 "/**"
                         ).permitAll()
 
-                        /*
-                         * Worker status updates are authenticated
-                         * separately using the internal worker key.
-                         * JobController performs the key validation.
-                         */
                         .requestMatchers(
                                 "/api/jobs/*/status"
                         ).permitAll()
